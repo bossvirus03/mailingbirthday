@@ -1,118 +1,185 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Thiệp Sinh Nhật</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
-	<link rel="stylesheet" href="styles.css" />
-	<script src="main.js" defer></script>
-</head>
-<body class="is-locked">
-	<div class="entry-gate" id="entryGate">
-		<form class="entry-card" id="entryForm">
-			<h2>Welcome to Mai linh's Party</h2>
-			<p>Nhập tên của bạn trước khi vào thiệp nhé.</p>
-			<label class="sound-switch" for="musicToggle">
-				<span>Bật nhạc khi vào thiệp</span>
-				<input id="musicToggle" type="checkbox" />
-				<span class="sound-slider" aria-hidden="true"></span>
-			</label>
-			<input id="nameInput" type="text" maxlength="30" placeholder="Tên của bạn" required />
-			<button type="submit">Vào thiệp</button>
-		</form>
-	</div>
-	<audio id="bgAudio" loop preload="auto" src="Happy Birthday to You (Always 14) - AMEE x Hoàng Dũng x Obito x Hứa Kim Tuyền  OFFICIAL LYRIC VIDEO.mp3"></audio>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thiệp Sinh Nhật</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&family=Quicksand:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body class="is-locked">
+    <div class="entry-gate" id="entryGate">
+      <form class="entry-card" id="entryForm">
+        <h2>Welcome to Mai linh's Party</h2>
+        <p>Nhập tên của bạn trước khi vào thiệp nhé.</p>
+        <label class="sound-switch" for="musicToggle">
+          <span>Bật nhạc khi vào thiệp</span>
+          <input id="musicToggle" type="checkbox" />
+          <span class="sound-slider" aria-hidden="true"></span>
+        </label>
+        <input
+          id="nameInput"
+          type="text"
+          maxlength="30"
+          placeholder="Tên của bạn"
+          required
+        />
+        <button type="submit">Vào thiệp</button>
+      </form>
+    </div>
+    <audio
+      id="bgAudio"
+      loop
+      preload="auto"
+      src="Happy Birthday to You (Always 14) - AMEE x Hoàng Dũng x Obito x Hứa Kim Tuyền  OFFICIAL LYRIC VIDEO.mp3"
+    ></audio>
 
-	<div class="app-shell" id="appShell" aria-hidden="true">
-	<div class="invitation-wrap">
-		<img class="top-cake" src="birthcake.png" alt="Bánh sinh nhật" />
+    <div class="app-shell" id="appShell" aria-hidden="true">
+      <div class="invitation-wrap">
+        <img class="top-cake" src="birthcake.png" alt="Bánh sinh nhật" />
 
-		<main class="card">
-			<section class="card-content">
-				<div class="photo">
-					<img src="./avt.jpg" alt="Ảnh mời sinh nhật" />
-				</div>
+        <main class="card">
+          <section class="card-content">
+            <div class="photo">
+              <img src="./avt.jpg" alt="Ảnh mời sinh nhật" />
+            </div>
 
-				<h1>Mai Linh'S 16TH BIRTHDAY INVITATION</h1>
-				<div class="bow-divider">🎀</div>
+            <h1>Mai Linh'S 22TH BIRTHDAY INVITATION</h1>
+            <div class="bow-divider">🎀</div>
+            <div class="countdown" aria-label="Đồng hồ đếm ngược tới sinh nhật">
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownDays">00</span>
+                <span class="countdown-label">Ngày</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownHours">00</span>
+                <span class="countdown-label">Giờ</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownMinutes">00</span>
+                <span class="countdown-label">Phút</span>
+              </div>
+              <div class="countdown-item">
+                <span class="countdown-value" id="countdownSeconds">00</span>
+                <span class="countdown-label">Giây</span>
+              </div>
+            </div>
+            <p class="description">
+              Thời gian trôi thật nhanh! Chớp mắt một cái là mình đã sắp bước
+              sang tuổi 22 rồi. Đây thực sự là một khoảnh khắc rất đặc biệt và
+              mình mong có thể cùng người thân yêu nhất chia sẻ niềm vui này.
+            </p>
 
-				<p class="description">
-					Thời gian trôi thật nhanh! Chớp mắt một cái là mình đã sắp bước sang tuổi 40 rồi.
-					Đây thực sự là một khoảnh khắc rất đặc biệt và mình mong có thể cùng người thân yêu nhất chia sẻ niềm vui này.
-				</p>
+            <p class="time">28/04</p>
+            <p class="tag">Happy Birthday, Mai Linh ♡</p>
+            <p class="welcome-line" id="welcomeLine"></p>
 
-				<p class="time">20:05 20/12</p>
-				<p class="tag">Happy Birthday, ML ♡</p>
-				<p class="welcome-line" id="welcomeLine"></p>
+            <section class="wishes" id="wishes"></section>
 
-				<section class="wishes" id="wishes"></section>
+            <div class="card-actions">
+              <button
+                class="wish-trigger action-input"
+                id="wishTrigger"
+                type="button"
+              >
+                <span>Gửi lời chúc...</span>
+                <span class="wish-trigger-icon">💬</span>
+              </button>
 
-				<div class="card-actions">
-					<button class="wish-trigger action-input" id="wishTrigger" type="button">
-						<span>Gửi lời chúc...</span>
-						<span class="wish-trigger-icon">💬</span>
-					</button>
+              <button
+                class="fab action-icon"
+                id="giftButton"
+                type="button"
+                aria-label="Mở mã QR chuyển tiền"
+              >
+                🎁
+              </button>
+              <button
+                class="fab heart-fab"
+                id="heartButton"
+                type="button"
+                aria-label="Thả tym"
+              >
+                <span class="heart-icon">♡</span>
+                <span class="heart-count" id="heartCount">0</span>
+              </button>
+            </div>
+          </section>
+        </main>
+      </div>
 
-					<button class="fab action-icon" id="giftButton" type="button" aria-label="Mở mã QR chuyển tiền">🎁</button>
-					<button class="fab heart-fab" id="heartButton" type="button" aria-label="Thả tym">
-						<span class="heart-icon">♡</span>
-						<span class="heart-count" id="heartCount">0</span>
-					</button>
-				</div>
-			</section>
-		</main>
-	</div>
+      <div class="wish-sheet-backdrop" id="wishSheetBackdrop" hidden></div>
+      <aside class="wish-sheet" id="wishSheet" aria-hidden="true" hidden>
+        <div class="wish-sheet-handle"></div>
+        <div class="wish-sheet-header">
+          <div>
+            <p class="wish-sheet-title">Gửi lời chúc</p>
+            <p class="wish-sheet-subtitle">Nhập lời chúc ở đây rồi bấm gửi.</p>
+          </div>
+          <button
+            class="wish-sheet-close"
+            id="wishSheetClose"
+            type="button"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <form class="wish-sheet-form" id="wishForm">
+          <input
+            id="wishText"
+            type="text"
+            maxlength="90"
+            placeholder="Nhập lời chúc..."
+          />
+          <button type="submit">Gửi</button>
+        </form>
+      </aside>
 
-	<div class="wish-sheet-backdrop" id="wishSheetBackdrop" hidden></div>
-	<aside class="wish-sheet" id="wishSheet" aria-hidden="true">
-		<div class="wish-sheet-handle"></div>
-		<div class="wish-sheet-header">
-			<div>
-				<p class="wish-sheet-title">Gửi lời chúc</p>
-				<p class="wish-sheet-subtitle">Nhập lời chúc ở đây rồi bấm gửi.</p>
-			</div>
-			<button class="wish-sheet-close" id="wishSheetClose" type="button" aria-label="Đóng">×</button>
-		</div>
-		<form class="wish-sheet-form" id="wishForm">
-			<input id="wishText" type="text" maxlength="90" placeholder="Nhập lời chúc..." />
-			<button type="submit">Gửi</button>
-		</form>
-	</aside>
+      <div class="gift-sheet-backdrop" id="giftSheetBackdrop" hidden></div>
+      <aside class="gift-sheet" id="giftSheet" aria-hidden="true" hidden>
+        <div class="wish-sheet-handle"></div>
+        <div class="wish-sheet-header">
+          <div>
+            <p class="wish-sheet-title">Mã QR chuyển tiền</p>
+            <p class="wish-sheet-subtitle">
+              Quét mã hoặc chuyển theo thông tin bên dưới.
+            </p>
+          </div>
+          <button
+            class="wish-sheet-close"
+            id="giftSheetClose"
+            type="button"
+            aria-label="Đóng"
+          >
+            ×
+          </button>
+        </div>
+        <div class="gift-sheet-content">
+          <div class="gift-qr" aria-hidden="true">
+            <div class="gift-qr-frame">
+              <span></span><span></span><span></span><span></span><span></span
+              ><span></span> <span></span><span></span><span></span><span></span
+              ><span></span><span></span> <span></span><span></span><span></span
+              ><span></span><span></span><span></span> <span></span><span></span
+              ><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <div class="gift-transfer-info">
+            <p><strong>Ngân hàng:</strong> MB Bank</p>
+            <p><strong>Số tài khoản:</strong> 0123456789</p>
+            <p><strong>Chủ tài khoản:</strong> MEI MAYLAN</p>
+          </div>
+        </div>
+      </aside>
+    </div>
 
-	<div class="gift-sheet-backdrop" id="giftSheetBackdrop" hidden></div>
-	<aside class="gift-sheet" id="giftSheet" aria-hidden="true" hidden>
-		<div class="wish-sheet-handle"></div>
-		<div class="wish-sheet-header">
-			<div>
-				<p class="wish-sheet-title">Mã QR chuyển tiền</p>
-				<p class="wish-sheet-subtitle">Quét mã hoặc chuyển theo thông tin bên dưới.</p>
-			</div>
-			<button class="wish-sheet-close" id="giftSheetClose" type="button" aria-label="Đóng">×</button>
-		</div>
-		<div class="gift-sheet-content">
-			<div class="gift-qr" aria-hidden="true">
-				<div class="gift-qr-frame">
-					<span></span><span></span><span></span><span></span><span></span><span></span>
-					<span></span><span></span><span></span><span></span><span></span><span></span>
-					<span></span><span></span><span></span><span></span><span></span><span></span>
-					<span></span><span></span><span></span><span></span><span></span><span></span>
-				</div>
-			</div>
-			<div class="gift-transfer-info">
-				<p><strong>Ngân hàng:</strong> MB Bank</p>
-				<p><strong>Số tài khoản:</strong> 0123456789</p>
-				<p><strong>Chủ tài khoản:</strong> MEI MAYLAN</p>
-			</div>
-		</div>
-	</aside>
-
-	</div>
-
-	<script>
-		
-	</script>
-</body>
+    <script></script>
+  </body>
 </html>

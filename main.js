@@ -31,11 +31,61 @@ const wishText = document.getElementById("wishText");
 const wishes = document.getElementById("wishes");
 const heartButton = document.getElementById("heartButton");
 const heartCount = document.getElementById("heartCount");
+const countdownDays = document.getElementById("countdownDays");
+const countdownHours = document.getElementById("countdownHours");
+const countdownMinutes = document.getElementById("countdownMinutes");
+const countdownSeconds = document.getElementById("countdownSeconds");
 
 let currentName = "";
 let wishList = [];
 let heartTotal = 0;
 let heartVoters = [];
+let countdownTimerId = null;
+
+function padTwoDigits(value) {
+  return String(Math.max(0, value)).padStart(2, "0");
+}
+
+function getNextBirthdayDate(referenceDate = new Date()) {
+  const year = referenceDate.getFullYear();
+  let target = new Date(year, 3, 28, 0, 0, 0, 0); // 28/04
+
+  if (target <= referenceDate) {
+    target = new Date(year + 1, 3, 28, 0, 0, 0, 0);
+  }
+
+  return target;
+}
+
+function updateCountdown() {
+  if (!countdownDays || !countdownHours || !countdownMinutes || !countdownSeconds) {
+    return;
+  }
+
+  const now = new Date();
+  const target = getNextBirthdayDate(now);
+  const diffMs = Math.max(0, target.getTime() - now.getTime());
+  const totalSeconds = Math.floor(diffMs / 1000);
+  const days = Math.floor(totalSeconds / (24 * 60 * 60));
+  const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+  const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+  const seconds = totalSeconds % 60;
+
+  countdownDays.textContent = padTwoDigits(days);
+  countdownHours.textContent = padTwoDigits(hours);
+  countdownMinutes.textContent = padTwoDigits(minutes);
+  countdownSeconds.textContent = padTwoDigits(seconds);
+}
+
+function startCountdown() {
+  updateCountdown();
+
+  if (countdownTimerId) {
+    clearInterval(countdownTimerId);
+  }
+
+  countdownTimerId = setInterval(updateCountdown, 1000);
+}
 
 function fallbackLoadState() {
   const rawWishes = localStorage.getItem(FALLBACK_KEYS.wishes);
@@ -180,7 +230,7 @@ function updateHeartUI() {
   heartButton.classList.toggle("is-liked", hasLiked);
   heartButton.disabled = !currentName || hasLiked;
   heartButton.setAttribute("aria-pressed", hasLiked ? "true" : "false");
-  heartButton.title = hasLiked ? "Bạn đã thả tym rồi" : "Thả tym cho chị nhé";
+  heartButton.title = hasLiked ? "Bạn đã thả tym rồi" : "Thả tym cho Linh nhé";
 }
 
 function openWishSheet() {
@@ -265,7 +315,7 @@ function enterInvitation(name) {
     musicToggle.checked ? "1" : "0",
   );
   welcomeLine.textContent =
-    "Xin chào " + name + ", để lại lời chúc cho chị nhé!";
+    "Xin chào " + name + ", để lại lời chúc cho Linh nhé!";
   updateHeartUI();
 
   if (musicToggle.checked) {
@@ -285,12 +335,13 @@ function enterInvitation(name) {
 
   setTimeout(() => {
     entryGate.style.display = "none";
-    wishText.focus();
+    wishTrigger.focus();
   }, 280);
 }
 
 applyState({ wishes: [], heartTotal: 0, heartVoters: [] });
 hydrateState();
+startCountdown();
 
 const savedName = localStorage.getItem(STORAGE_KEYS.name);
 if (savedName) {
