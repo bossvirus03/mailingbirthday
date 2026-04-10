@@ -180,7 +180,7 @@ function updateHeartUI() {
   heartButton.classList.toggle("is-liked", hasLiked);
   heartButton.disabled = !currentName || hasLiked;
   heartButton.setAttribute("aria-pressed", hasLiked ? "true" : "false");
-  heartButton.title = hasLiked ? "Bạn đã thả tym rồi" : "Thả tym cho Mei";
+  heartButton.title = hasLiked ? "Bạn đã thả tym rồi" : "Thả tym cho chị nhé";
 }
 
 function openWishSheet() {
@@ -265,7 +265,7 @@ function enterInvitation(name) {
     musicToggle.checked ? "1" : "0",
   );
   welcomeLine.textContent =
-    "Xin chào " + name + ", để lại lời chúc cho Mei nhé!";
+    "Xin chào " + name + ", để lại lời chúc cho chị nhé!";
   updateHeartUI();
 
   if (musicToggle.checked) {
